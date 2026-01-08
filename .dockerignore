@@ -1,0 +1,60 @@
+# Node modules
+node_modules
+**/node_modules
+
+# Build outputs
+dist
+build
+.next
+.nuxt
+
+# Tests
+tests
+**/*.spec.js
+**/*.test.js
+coverage
+
+# Tauri (desktop app - not needed in Docker)
+client/src-tauri
+**/src-tauri
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+logs
+
+# Documentation
+README.md
+CODE_OF_CONDUCT.md
+LICENSE
+*.md
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+compose*.yaml
+
+# CI/CD
+.github
+.gitlab-ci.yml
+
+# Misc
+eslint.config.js
+jsconfig.json
+vercel.json

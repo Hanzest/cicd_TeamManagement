@@ -1,0 +1,23 @@
+services:
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tm-project-client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./public:/usr/src/app/public
+      - ./index.html:/usr/src/app/index.html
+      - ./vite.config.js:/usr/src/app/vite.config.js
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    networks:
+      - tm-network
+
+networks:
+  tm-network:
+    driver: bridge
