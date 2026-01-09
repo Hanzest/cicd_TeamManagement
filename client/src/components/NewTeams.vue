@@ -3,6 +3,7 @@ import { ref, onMounted, watch, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useGlobalNotifications } from '../composables/useGlobalNotifications.js'
 import '../styles/buttonStyling.css'
+import { fetchWithCsrf } from '../services/csrfService.js'
 
 const { showSuccess, showError } = useGlobalNotifications()
 
@@ -137,14 +138,15 @@ const createTeam = async () => {
   }
 
   loading.value = true // Set loading state
-  console.log('Creating project with data:', newTeam.value)
+  console.log('Creating team with data:', newTeam.value)
   try {
     const PORT = import.meta.env.VITE_API_PORT
-    const response = await fetch(`${PORT}/api/teams`, {
+    const response = await fetchWithCsrf(`${PORT}/api/teams`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      // credentials: 'include', // Include cookies for authentication
       body: JSON.stringify(newTeam.value),
     })
 
